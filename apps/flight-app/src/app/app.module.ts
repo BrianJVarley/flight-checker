@@ -15,6 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SharedModule } from './shared/shared.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoggerModule } from '@flight-workspace/logger-lib';
+import { FlightTypeaheadComponent } from './flight-typeahead/flight-typeahead.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -29,6 +31,7 @@ import { LoggerModule } from '@flight-workspace/logger-lib';
     SharedModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES),
     LoggerModule.forRoot({ enableDebug: true }),
+    ReactiveFormsModule,
   ],
   declarations: [
     AppComponent,
@@ -36,6 +39,7 @@ import { LoggerModule } from '@flight-workspace/logger-lib';
     NavbarComponent,
     HomeComponent,
     BasketComponent,
+    FlightTypeaheadComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

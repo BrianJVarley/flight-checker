@@ -15,7 +15,7 @@ import { AirportComponent } from './airport/airport.component';
     CommonModule,
     FormsModule,
     SharedModule.forChild(),
-    RouterModule
+    RouterModule,
   ],
   declarations: [
     FlightSearchComponent,
@@ -23,12 +23,9 @@ import { AirportComponent } from './airport/airport.component';
     PassengerSearchComponent,
     FlightEditComponent,
     FlightBookingComponent,
-    AirportComponent
+    AirportComponent,
   ],
   providers: [],
-  exports: [
-    FlightSearchComponent
-  ]
+  exports: [FlightSearchComponent],
 })
-export class FlightBookingModule {
-}
+export class FlightBookingModule {}
