@@ -94,10 +94,17 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 
 ## ☁ Nx Cloud
 
+## Creating Libs
 
-## Eslint Domain rules
+> The publishable (also buildable) switch makes sure the library can be compiled separately which is the key for incremental compilation.
+```
+ng g lib ui-card --directory luggage --buildable
+```
 
-Example eslint error displayed if project imports lib not tagged in it's project's tag.
+
+## Linting - Domain rules
+
+Example eslint error displayed if project or lib imports a lib not tagged correctly in `project.json` tag property. e.g, `"tags": ["domain:luggage", "type:feature"]`
 
 ```
 ➜  flight-checker git:(main) ✗ ng lint luggage-feature-report-loss
