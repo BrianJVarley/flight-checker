@@ -26,7 +26,7 @@
       ],
       "@flight-workspace/passenger/feature-search": [
         "libs/passenger/feature-search/src/index.ts"
-      ]
+      ],
     }
   },
   "exclude": ["node_modules", "tmp"]

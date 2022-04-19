@@ -4,8 +4,17 @@ import { CommonModule } from '@angular/common';
 import { LogMonitorComponent } from './log-monitor.component';
 import { LoggerConfig } from './logger.config';
 import { LoggerService } from './logger.service';
+import { DefaultLogFormatterService } from './default-log-formatter.service';
+import { LogFormatterService } from './log-formatter.service';
 
 // imports: [ LoggerModule.forRoot({ ... }) ]
+
+const defaultFormatterConfig = [
+  {
+    provide: LogFormatterService,
+    useClass: DefaultLogFormatterService,
+  },
+];
 
 @NgModule({
   imports: [
@@ -14,9 +23,9 @@ import { LoggerService } from './logger.service';
   declarations: [
     LogMonitorComponent
   ],
-  // providers: [
-  //   LoggerService
-  // ],
+  providers: [
+    LoggerService
+  ],
   exports: [
     LogMonitorComponent
   ]
@@ -28,9 +37,12 @@ export class LoggerModule {
     return {
       ngModule: LoggerModule,
       providers: [
-        { provide: LoggerConfig, useValue: config }
-      ]
-    }
+        { provide: LoggerConfig, useValue: config },
+        !config.logFormatterType // Enable default implementation of service and also ability to override
+          ? defaultFormatterConfig
+          : { provide: LogFormatterService, useClass: config.logFormatterType },
+      ],
+    };
   }
 
 }
