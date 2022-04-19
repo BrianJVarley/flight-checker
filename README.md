@@ -94,6 +94,34 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 
 ## ☁ Nx Cloud
 
+
+## Eslint Domain rules
+
+Example eslint error displayed if project imports lib not tagged in it's project's tag.
+
+```
+➜  flight-checker git:(main) ✗ ng lint luggage-feature-report-loss
+> nx run luggage-feature-report-loss:lint
+Linting "luggage-feature-report-loss"...
+
+/Users/brianva/Projects/training/flight-checker/libs/luggage/feature-report-loss/src/lib/luggage-feature-report-loss.module.ts
+  5:1  error  A project tagged with "domain:luggage" can only depend on libs tagged with "domain:luggage", "domain:shared"  @nrwl/nx/enforce-module-boundaries
+  6:1  error  Projects cannot be imported by a relative or absolute path, and must begin with a npm scope                   @nrwl/nx/enforce-module-boundaries
+
+✖ 2 problems (2 errors, 0 warnings)
+
+Lint errors found in the listed files.
+
+
+ —————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+ >  NX   Ran target lint for project luggage-feature-report-loss (2s)
+
+    ✖    1/1 failed
+    ✔    0/1 succeeded [0 read from cache]
+
+```
+
 ### Distributed Computation Caching & Distributed Task Execution
 
 <p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
