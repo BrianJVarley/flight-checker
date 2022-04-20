@@ -9,7 +9,6 @@ import {
   filter,
   map,
   Observable,
-  of,
   pairwise,
   share,
   Subscription,
@@ -61,7 +60,13 @@ export class FlightTypeaheadComponent implements OnDestroy {
       // Filtering END
       // Side Effect: Loading state
       tap((input) => (this.loading = true)),
-      switchMap((input) => this.load(input)),
+      switchMap((input) => this.load(input).pipe(
+        catchError(() => {
+          this.loading = false;
+          return [];
+        }
+        ),
+      )),
       tap((v) => (this.loading = false)),
       catchError((err) => throwError({ error: err }))
     );

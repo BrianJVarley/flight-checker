@@ -31,6 +31,11 @@ export const selectUserName = createSelector(
   (state) => state.user?.name
 );
 
+export const selecFlightsCount = createSelector(
+  selectFlights,
+  (flights) => flights?.length
+);
+
 
 export const selectItemsByFilter = <T, K>(
   mapFn: (state: T) => Array<K>,
@@ -45,7 +50,7 @@ export const selectItemsByFilter = <T, K>(
       arr.filter(filter)
     )
   );
-  
+
 export const selectDelayedFlights = () =>
   pipe(
     // RxJS operator to select state from store

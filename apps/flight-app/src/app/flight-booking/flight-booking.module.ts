@@ -13,14 +13,18 @@ import { StoreModule } from '@ngrx/store';
 import * as fromFlightBooking from './+state/flight-booking.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { FlightBookingEffects } from './+state/flight-booking.effects';
+import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     SharedModule.forChild(),
-    RouterModule,
-    StoreModule.forFeature(fromFlightBooking.flightBookingFeatureKey, fromFlightBooking.reducer),
+    RouterModule.forChild(FLIGHT_BOOKING_ROUTES),
+      StoreModule.forFeature(
+        fromFlightBooking.flightBookingFeatureKey,
+        fromFlightBooking.reducer
+      ),
     EffectsModule.forFeature([FlightBookingEffects]),
   ],
   declarations: [
