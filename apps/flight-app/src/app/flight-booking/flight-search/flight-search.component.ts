@@ -4,7 +4,7 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { Flight, FlightService } from '@flight-workspace/flight-lib';
 import { Store } from '@ngrx/store';
 import { combineLatest, delay, fromEvent, Observable, Subscription, take } from 'rxjs';
-import { flightsLoaded, updateFlight } from '../+state/flight-booking.actions';
+import { flightsLoad, flightsLoaded, updateFlight } from '../+state/flight-booking.actions';
 import { FlightBookingAppState } from '../+state/flight-booking.reducer';
 
 @Component({
@@ -68,14 +68,23 @@ export class FlightSearchComponent implements OnInit, AfterViewInit {
     // });
 
     // Store action example
-    this.flightService.find(this.from, this.to, this.urgent).subscribe({
-      next: (flights) => {
-        this.store.dispatch(flightsLoaded({ flights }));
-      },
-      error: (error) => {
-        console.error('error', error);
-      },
-    });
+    // this.flightService.find(this.from, this.to, this.urgent).subscribe({
+    //   next: (flights) => {
+    //     this.store.dispatch(flightsLoaded({ flights }));
+    //   },
+    //   error: (error) => {
+    //     console.error('error', error);
+    //   },
+    // });
+
+    // Dispatching action to effects
+    this.store.dispatch(
+      flightsLoad({
+        from: this.from,
+        to: this.to,
+        urgent: this.urgent,
+      })
+    );
   }
 
   /**
