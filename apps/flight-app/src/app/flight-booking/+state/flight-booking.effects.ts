@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, concatMap, switchMap } from 'rxjs/operators';
-import { Observable, EMPTY, of } from 'rxjs';
+import { EMPTY, of } from 'rxjs';
 
 import * as FlightBookingActions from './flight-booking.actions';
-import { FlightService } from '@flight-workspace/flight-lib';
-import { AbstractFlightService } from 'libs/flight-lib/src/lib/services/abstract-flight.service';
+import { AbstractFlightService } from '@flight-workspace/flight-lib';
 
 
 
