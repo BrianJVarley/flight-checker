@@ -112,6 +112,10 @@ ng g lib ui-card --directory luggage --buildable
 ```
 
 
+## RxJS
+
+- RxJS decision tree, use to figure out what operators to use - https://rxjs.dev/operator-decision-tree
+
 ## Linting - Domain rules
 
 Example eslint error displayed if project or lib imports a lib not tagged correctly in `project.json` tag property. e.g, `"tags": ["domain:luggage", "type:feature"]`

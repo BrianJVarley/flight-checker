@@ -78,6 +78,9 @@ export class FlightSearchComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Delays the first found flight for 15 minutes
+   */
   delay(): void {
     this.flights$.pipe(take(1)).subscribe((flights: Flight[]) => {
       const flight = flights[0];

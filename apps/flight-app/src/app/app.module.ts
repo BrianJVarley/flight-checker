@@ -3,7 +3,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, RouterState } from '@angular/router';
 import { FlightLibModule } from '@flight-workspace/flight-lib';
 
 import { AppComponent } from './app.component';
@@ -28,10 +28,8 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     HttpClientModule,
     FlightBookingModule,
-
     BrowserAnimationsModule,
     FlightCancellingModule,
-
     FlightLibModule.forRoot(),
     SharedModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES),
