@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FlightService } from '@flight-workspace/flight-lib';
+import { Flight, FlightService } from '@flight-workspace/flight-lib';
 import { Store } from '@ngrx/store';
-import { combineLatest, delay, fromEvent, Observable, Subscription } from 'rxjs';
-import { flightsLoaded } from '../+state/flight-booking.actions';
+import { combineLatest, delay, fromEvent, Observable, Subscription, take } from 'rxjs';
+import { flightsLoaded, updateFlight } from '../+state/flight-booking.actions';
 import { FlightBookingAppState } from '../+state/flight-booking.reducer';
 
 @Component({
@@ -79,6 +79,14 @@ export class FlightSearchComponent implements OnInit, AfterViewInit {
   }
 
   delay(): void {
-    this.flightService.delay();
+    this.flights$.pipe(take(1)).subscribe((flights: Flight[]) => {
+      const flight = flights[0];
+
+      const oldDate = new Date(flight.date);
+      const newDate = new Date(oldDate.getTime() + 15 * 60 * 1000);
+      const newFlight = { ...flight, date: newDate.toISOString() };
+
+      this.store.dispatch(updateFlight({ flight: newFlight }));
+    });
   }
 }
