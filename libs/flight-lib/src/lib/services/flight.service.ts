@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Flight } from '../models/flight';
+import { AbstractFlightService } from './abstract-flight.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class FlightService {
+export class FlightService implements AbstractFlightService {
   flights: Flight[] = [];
   baseUrl = `http://www.angular.at/api`;
   // baseUrl = `http://localhost:3000`;

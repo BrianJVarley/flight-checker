@@ -1,12 +1,39 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { Flight, FlightService } from '@flight-workspace/flight-lib';
 import { Store } from '@ngrx/store';
-import { combineLatest, delay, fromEvent, map, Observable, Subscription, take } from 'rxjs';
-import { flightsLoad, flightsLoaded, updateFlight } from '../+state/flight-booking.actions';
+import { AbstractFlightService } from 'libs/flight-lib/src/lib/services/abstract-flight.service';
+import {
+  combineLatest,
+  delay,
+  fromEvent,
+  map,
+  Observable,
+  Subscription,
+  take,
+} from 'rxjs';
+import {
+  flightsLoad,
+  flightsLoaded,
+  updateFlight,
+} from '../+state/flight-booking.actions';
 import { FlightBookingAppState } from '../+state/flight-booking.reducer';
-import { selectActiveUserFlights, selectBlockedFlightsWithParam, selectDelayedFlights, selectedFilteredFlights, selectFlights, selectItemsByFilter, selectUser, selectUserName } from '../+state/flight-booking.selectors';
+import {
+  selectActiveUserFlights,
+  selectBlockedFlightsWithParam,
+  selectDelayedFlights,
+  selectedFilteredFlights,
+  selectFlights,
+  selectItemsByFilter,
+  selectUserName,
+} from '../+state/flight-booking.selectors';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -26,11 +53,8 @@ export class FlightSearchComponent implements OnInit, AfterViewInit {
   delayedFlights$ = this.store.select(selectDelayedFlights);
 
   flightsFiltered$ = this.store.pipe(
-        selectItemsByFilter(
-            selectFlights,
-            flight => flight.delayed === false
-        )
-    );
+    selectItemsByFilter(selectFlights, (flight) => flight.delayed === false)
+  );
 
   get flights() {
     return this.flightService.flights;
@@ -52,7 +76,7 @@ export class FlightSearchComponent implements OnInit, AfterViewInit {
   private to$!: Observable<string>;
 
   constructor(
-    private flightService: FlightService,
+    private flightService: AbstractFlightService,
     private store: Store<FlightBookingAppState>
   ) {}
 

@@ -5,6 +5,7 @@ import { Observable, EMPTY, of } from 'rxjs';
 
 import * as FlightBookingActions from './flight-booking.actions';
 import { FlightService } from '@flight-workspace/flight-lib';
+import { AbstractFlightService } from 'libs/flight-lib/src/lib/services/abstract-flight.service';
 
 
 
@@ -40,6 +41,6 @@ export class FlightBookingEffects {
 
   constructor(
     private actions$: Actions,
-    private flightService: FlightService
+    private flightService: AbstractFlightService
   ) {}
 }
