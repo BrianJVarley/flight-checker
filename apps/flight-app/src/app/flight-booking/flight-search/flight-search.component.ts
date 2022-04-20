@@ -3,9 +3,10 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Flight, FlightService } from '@flight-workspace/flight-lib';
 import { Store } from '@ngrx/store';
-import { combineLatest, delay, fromEvent, Observable, Subscription, take } from 'rxjs';
+import { combineLatest, delay, fromEvent, map, Observable, Subscription, take } from 'rxjs';
 import { flightsLoad, flightsLoaded, updateFlight } from '../+state/flight-booking.actions';
 import { FlightBookingAppState } from '../+state/flight-booking.reducer';
+import { selectActiveUserFlights, selectBlockedFlightsWithParam, selectDelayedFlights, selectedFilteredFlights, selectFlights, selectItemsByFilter, selectUser, selectUserName } from '../+state/flight-booking.selectors';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector
@@ -18,7 +19,18 @@ export class FlightSearchComponent implements OnInit, AfterViewInit {
   to = 'Graz'; // in Austria
   urgent = false;
 
-  flights$ = this.store.select((s) => s.flightBooking.flights);
+  flights$ = this.store.select(selectedFilteredFlights);
+  flightsBlocked$ = this.store.select(selectBlockedFlightsWithParam([3]));
+  activeFlightsForUser$ = this.store.select(selectActiveUserFlights);
+  activeUser$ = this.store.select(selectUserName);
+  delayedFlights$ = this.store.select(selectDelayedFlights);
+
+  flightsFiltered$ = this.store.pipe(
+        selectItemsByFilter(
+            selectFlights,
+            flight => flight.delayed === false
+        )
+    );
 
   get flights() {
     return this.flightService.flights;
