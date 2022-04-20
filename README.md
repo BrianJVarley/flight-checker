@@ -94,6 +94,16 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 
 ## ☁ Nx Cloud
 
+
+# NGRX Schematics
+
+Generating feature module state:
+
+```Bash
+ng generate @ngrx/schematics:feature flight-booking/+state/flight-booking --module=flight-booking/flight-booking.module.ts --creators --api
+```
+
+
 ## Creating Libs
 
 > The publishable (also buildable) switch makes sure the library can be compiled separately which is the key for incremental compilation.

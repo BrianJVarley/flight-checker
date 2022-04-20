@@ -17,6 +17,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { LoggerModule } from '@flight-workspace/logger-lib';
 import { FlightTypeaheadComponent } from './flight-typeahead/flight-typeahead.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './+state';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   imports: [
@@ -32,6 +37,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule.forRoot(APP_ROUTES),
     LoggerModule.forRoot({ enableDebug: true }),
     ReactiveFormsModule,
+    StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   declarations: [
     AppComponent,
