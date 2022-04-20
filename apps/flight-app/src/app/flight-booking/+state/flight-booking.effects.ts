@@ -31,7 +31,10 @@ export class FlightBookingEffects {
     this.actions$.pipe(
       ofType(FlightBookingActions.flightsLoad),
       switchMap((a) => this.flightService.find(a.from, a.to, a.urgent)),
-      map((flights) => FlightBookingActions.flightsLoaded({ flights }))
+      map((flights) => FlightBookingActions.flightsLoaded({ flights })),
+      catchError((err) =>
+        of(FlightBookingActions.flightsLoadedError({ error: err }))
+      )
     )
   );
 
@@ -39,5 +42,4 @@ export class FlightBookingEffects {
     private actions$: Actions,
     private flightService: FlightService
   ) {}
-
 }
