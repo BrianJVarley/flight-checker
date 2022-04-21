@@ -1,0 +1,9 @@
+<source>
+  Welcome
+  <x id="INTERPOLATION" equiv-text="{{ userName }}" />
+</source>
+<!-- add this target tag -->
+<target>
+  Willkommen
+  <x id="INTERPOLATION" equiv-text="{{ userName }}" />
+</target>

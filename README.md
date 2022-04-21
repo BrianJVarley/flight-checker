@@ -10,6 +10,8 @@ This project was generated using [Nx](https://nx.dev).
 
 ## Quick Start & Documentation
 
+[angulararchitects.io workshop](http://workshops.angulararchitects.io/mz/5492371f-f2c0-4ee7-a6f1-5a0f76d31371/links.html)
+
 [Nx Documentation](https://nx.dev/angular)
 
 [10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
@@ -89,15 +91,26 @@ Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
 
 
 
+## localization
 
+## Testing i18n in a local buildable
 
+1. Run: `ng build flight-app --localize` to generate a localized build.
+2. On the command line, switch to the folder dist/apps/flight-app. You should see a de and a en-US sub folder there.
+3. Make sure you have the command line web server serve installed (npm i -g serve) and run it in this very folder:
 
-## ☁ Nx Cloud
+```
+serve
+```
 
+4. With the browser, open <http://localhost:5000>. You should see two language folders (de and en-US).
+By clicking on these folders, you should get the respective language version.
 
-# NGRX Schematics
+# NGRX
 
-Generating feature module state:
+[When to use NgRx?](https://ngrx.io/guide/store/why#when-should-i-use-ngrx-store-for-state-management)
+
+## Generating feature module state:
 
 ```Bash
 ng generate @ngrx/schematics:feature flight-booking/+state/flight-booking --module=flight-booking/flight-booking.module.ts --creators --api

@@ -3,6 +3,12 @@
   "root": "apps/flight-app",
   "sourceRoot": "apps/flight-app/src",
   "prefix": "flight-workspace",
+  "i18n": {
+    "locales": {
+      "de": "apps/flight-app/i18n/messages.de.xlf"
+    },
+    "sourceLocale": "en-US"
+  },
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
