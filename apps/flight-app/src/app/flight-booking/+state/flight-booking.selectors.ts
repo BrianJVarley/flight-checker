@@ -17,7 +17,7 @@ export const selectPassengers = createSelector(
 
 export const selectFlights = createSelector(
   selectFlightBooking,
-  (state) => state.flights
+  (state) => state?.flights || []
 );
 
 export const selectBookings = createSelector(

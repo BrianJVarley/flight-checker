@@ -7,7 +7,6 @@ import { FlightBookingComponent } from './flight-booking.component';
 import { FlightCardComponent } from './flight-card/flight-card.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
-import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 import { AirportComponent } from './airport/airport.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromFlightBooking from './+state/flight-booking.reducer';
@@ -31,7 +30,6 @@ import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
   declarations: [
     FlightSearchComponent,
     FlightCardComponent,
-    PassengerSearchComponent,
     FlightEditComponent,
     FlightBookingComponent,
     AirportComponent,

@@ -12,9 +12,12 @@
     "affected:dep-graph": "nx graph affected",
     "affected:libs": "nx affected --target=libs --all",
     "i18n:extract:flight-app": "ng xi18n --project flight-app",
-    "build:flight-app": "ng build flight-app --localize"
+    "build:flight-app": "ng build flight-app --localize --output-path i18n/ --project=flight-app"
   },
   "private": true,
+  "engines": {
+    "node": ">=14.0.0 <14.18.1"
+  },
   "dependencies": {
     "@angular-architects/module-federation-tools": "^14.2.2",
     "@angular/animations": "13.3.3",
@@ -22,6 +25,7 @@
     "@angular/common": "13.3.3",
     "@angular/compiler": "13.3.3",
     "@angular/core": "13.3.3",
+    "@angular/localize": "13.3.3",
     "@angular/elements": "13.3.3",
     "@angular/forms": "13.3.3",
     "@angular/platform-browser": "13.3.3",

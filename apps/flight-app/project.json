@@ -59,6 +59,12 @@
           ],
           "outputHashing": "all"
         },
+        "en-US": {
+          "localize": ["en-US"]
+        },
+        "fr": {
+          "localize": ["de"]
+        },
         "development": {
           "buildOptimizer": false,
           "optimization": false,
