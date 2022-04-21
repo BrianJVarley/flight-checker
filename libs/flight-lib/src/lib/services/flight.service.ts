@@ -2,11 +2,21 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
+import { libConfig } from '../config/config';
 import { Flight } from '../models/flight';
 import { AbstractFlightService } from './abstract-flight.service';
+import { DummyFlightService } from './dummy-flight.service';
 
 @Injectable({
   providedIn: 'root',
+  useFactory: (http: HttpClient) => {
+    if (libConfig['environment'] === 'prod') {
+      return new FlightService(http);
+    } else {
+      return new DummyFlightService();
+    }
+  },
+  deps: [HttpClient],
 })
 export class FlightService implements AbstractFlightService {
   flights: Flight[] = [];
