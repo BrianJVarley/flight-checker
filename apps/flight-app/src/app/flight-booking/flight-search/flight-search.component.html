@@ -41,11 +41,10 @@
           >
             Delay 1st Flight
           </button>
+          <div *ngIf="flights.length > 0">
+            {{ flights.length }} flights found!
+          </div>
         </ng-container>
-
-        <div *ngIf="flights.length > 0">
-          {{ flights.length }} flights found!
-        </div>
       </div>
     </form>
   </div>
@@ -61,27 +60,29 @@
 
 <div class="card" *ngIf="(activeFlightsForUser$ | async)?.length !== 0">
   <div class="header">
-    <h2 class="title">Active Flights - User: {{ activeUser$ | async | titlecase}}</h2>
+    <h2 class="title">
+      Active Flights - User: {{ activeUser$ | async | titlecase }}
+    </h2>
   </div>
   <div class="content">
-      <div class="row">
-        <div *ngFor="let activeFlights of activeFlightsForUser$ | async">
-          <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-            <flight-card
-              [item]="activeFlights"
-              [(selected)]="basket[activeFlights.id]"
-            >
-            </flight-card>
-          </div>
+    <div class="row">
+      <div *ngFor="let activeFlights of activeFlightsForUser$ | async">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+          <flight-card
+            [item]="activeFlights"
+            [(selected)]="basket[activeFlights.id]"
+          >
+          </flight-card>
         </div>
       </div>
+    </div>
   </div>
 </div>
 
 <div class="card">
   <div class="content">
     <pre>{{ basket | json }}</pre>
-     <!-- <pre>{{ delayedFlights$ | async }}</pre> -->
-     <pre>{{ flightsFiltered$ | async | json }}</pre>
+    <!-- <pre>{{ delayedFlights$ | async }}</pre> -->
+    <pre>{{ flightsFiltered$ | async | json }}</pre>
   </div>
 </div>

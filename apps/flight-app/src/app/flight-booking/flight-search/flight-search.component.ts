@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { Flight, FlightService } from '@flight-workspace/flight-lib';
 import { Store } from '@ngrx/store';
-import { AbstractFlightService } from 'libs/flight-lib/src/lib/services/abstract-flight.service';
 import {
   combineLatest,
   delay,
@@ -56,10 +55,6 @@ export class FlightSearchComponent implements OnInit, AfterViewInit {
     selectItemsByFilter(selectFlights, (flight) => flight.delayed === false)
   );
 
-  get flights() {
-    return this.flightService.flights;
-  }
-
   // "shopping basket" with selected flights
   basket: { [id: number]: boolean } = {
     3: true,
@@ -76,7 +71,6 @@ export class FlightSearchComponent implements OnInit, AfterViewInit {
   private to$!: Observable<string>;
 
   constructor(
-    private flightService: AbstractFlightService,
     private store: Store<FlightBookingAppState>
   ) {}
 

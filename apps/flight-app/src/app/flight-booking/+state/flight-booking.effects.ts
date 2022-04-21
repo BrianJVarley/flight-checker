@@ -4,7 +4,7 @@ import { catchError, map, concatMap, switchMap } from 'rxjs/operators';
 import { EMPTY, of } from 'rxjs';
 
 import * as FlightBookingActions from './flight-booking.actions';
-import { AbstractFlightService } from '@flight-workspace/flight-lib';
+import { FlightService } from '@flight-workspace/flight-lib';
 
 
 
@@ -40,6 +40,6 @@ export class FlightBookingEffects {
 
   constructor(
     private actions$: Actions,
-    private flightService: AbstractFlightService
+    private flightService: FlightService,
   ) {}
 }
