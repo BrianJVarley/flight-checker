@@ -60,9 +60,19 @@
           "outputHashing": "all"
         },
         "en-US": {
+          "optimization": {
+            "scripts": true,
+            "styles": true,
+            "fonts": false
+          },
           "localize": ["en-US"]
         },
-        "fr": {
+        "de": {
+          "optimization": {
+            "scripts": true,
+            "styles": true,
+            "fonts": false
+          },
           "localize": ["de"]
         },
         "development": {
@@ -84,6 +94,9 @@
         },
         "development": {
           "browserTarget": "flight-app:build:development"
+        },
+        "de": {
+          "browserTarget": "flight-app:build:de"
         }
       },
       "defaultConfiguration": "development"

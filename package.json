@@ -6,13 +6,14 @@
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2015 browser module main",
     "start": "nx serve",
+    "start:de": "ng serve --configuration=de",
     "build": "nx build",
     "test": "nx test",
     "dep-graph": "nx graph",
     "affected:dep-graph": "nx graph affected",
     "affected:libs": "nx affected --target=libs --all",
     "i18n:extract:flight-app": "ng xi18n --project flight-app",
-    "build:flight-app": "ng build flight-app --localize --output-path i18n/ --project=flight-app"
+    "build:flight-app": "ng build flight-app --prod --localize -"
   },
   "private": true,
   "engines": {
